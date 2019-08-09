@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 
-
 export default class Recipes extends React.Component {
     constructor() {
         super();
@@ -25,7 +24,7 @@ export default class Recipes extends React.Component {
             <div >
             {this.state.recipes.map(recipe => {
                 return(
-                <div>
+                <div key={recipe.name} data-testid="recipe">
                     <h1>{recipe.name}</h1>
                     <p>Course: {recipe.course}</p>
                     <p>Technique: {recipe.technique}</p>
