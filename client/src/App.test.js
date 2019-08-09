@@ -10,12 +10,20 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-describe("<Recipes /> component", () =>{
-  it("Should render a list of recipes", () => {
-      const comp = render(<App />);
+describe("App", () => {
+  it("Submit button can be clicked", () => {
+    const { getByText } = render(<App />);
 
-      const listedRecipes = comp.getAllByTestId("recipe");
-      expect(listedRecipes).toHaveLength(7)
+    const submitButton = getByText(/submit/i);
+    fireEvent.click(submitButton);
   })
-  
+})
+
+describe("App", () => {
+  it("username field is rendered", () => {
+    const { getByText, getByPlaceholderText } = render(<App />);
+
+    const username = getByPlaceholderText(/username/i);
+    expect(username).toBeTruthy();
+  })
 })
